@@ -24,7 +24,7 @@ Example structure below.
 
 Just open PowerShell and call the module like below 
 ```PowerShell
-NewJob
+New-Job
 ```
 You'll be asked for the Job Title, the module will create the directory, copy your rough cover letter to this directory and open it for you. 
 
