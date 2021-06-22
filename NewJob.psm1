@@ -27,6 +27,8 @@ function New-Job {
     ConvertTo-Json $newconfig | Set-Content "$PSScriptRoot/config.json"
     }
     
+    #Get the new configuration
+    $config = get-content -Path "$PSScriptRoot/config.json" -ErrorAction Stop | ConvertFrom-Json 
     #Check configuration is valid 
     $validation = $config.valid
     if ($validation -ne "true" ) {
