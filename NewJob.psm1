@@ -1,4 +1,4 @@
-function NewJob {
+function New-Job {
     #Read config or generate a new one
     try {
         $config = get-content -Path "$PSScriptRoot/config.json" -ErrorAction Stop | ConvertFrom-Json 
