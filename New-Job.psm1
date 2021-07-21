@@ -7,12 +7,12 @@ function New-Job {
     #Collecting infomation and write the new config
     Write-Output "Unable to locate configuration, generating new configuration"
     $Jobsearchroot = Read-Host "Please input the Full UNC Path of your job search, this is where you wish to have the cover letters and any other supporting documents stored in a directory per job basis"
-    if ($Jobsearchroot.EndsWith('/') -ne 'true') {
-      $Jobsearchroot = $Jobsearchroot + '/'
+    if ($Jobsearchroot.EndsWith('\') -ne 'true') {
+      $Jobsearchroot = $Jobsearchroot + '\'
     }
     $draftletterloc = Read-Host "Please input the full UNC Path of the folder where draft cover letter is located"
-    if ($draftletterloc.EndsWith('/') -ne 'true') {
-      $draftletterloc = $draftletterloc + '/'
+    if ($draftletterloc.EndsWith('\') -ne 'true') {
+      $draftletterloc = $draftletterloc + '\'
     }
     $draftletter = Read-Host "Please type the full filename of the draft cover letter, including the file extention"
     $valid = "true"
@@ -35,13 +35,13 @@ function New-Job {
       #Collecting infomation and write the new config
     Write-Output "Unable to locate a vaild configuration, generating new configuration"
     $Jobsearchroot = Read-Host "Please input the Full UNC Path of your job search, this is where you wish to have the cover letters and any other supporting documents stored in a directory per job basis"
-    if ($Jobsearchroot.EndsWith('/') -ne 'true') {
-      $Jobsearchroot = $Jobsearchroot + '/'
+    if ($Jobsearchroot.EndsWith('\') -ne 'true') {
+      $Jobsearchroot = $Jobsearchroot + '\'
     }
     
     $draftletterloc = Read-Host "Please input the full UNC Path of the folder where draft cover letter is located"
-    if ($draftletterloc.EndsWith('/') -ne 'true') {
-      $draftletterloc = $draftletterloc + '/'
+    if ($draftletterloc.EndsWith('\') -ne 'true') {
+      $draftletterloc = $draftletterloc + '\'
     }
     $draftletter = Read-Host "Please type the full filename of the draft cover letter, including the file extention"
     $valid = "true"
