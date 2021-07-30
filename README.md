@@ -13,7 +13,7 @@ You have a rough cover letter that you use during applications and wish to edit.
 Example structure below.
 
 ```
-# Location for the application folders to be stored
+# Location for the application folders to be stored, this can be made during the inital configuration.  
 '~/Documents/Employment/Job-Search/'
 
 # Location of a Cover Letter
