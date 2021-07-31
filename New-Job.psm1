@@ -86,10 +86,12 @@ $coverletter = $config.draftletter
 [string] $year = (Get-Date).Year
 $date = $year +" " + $month
 #Get infomation from user
-Write-Output "What's the job title?"
+Write-Output "What is the job title?"
 [String]$Jobtitle = Read-Host
+Write-Output "Company name?"
+[string]$company = Read-Host
 #Make new directory
-$Jobtitle = ($date + " - " + $Jobtitle)
+$Jobtitle = ($date + " - " + $Jobtitle + '(' + $company +')')
 $Jobdir = $Jobsearchroot + $Jobtitle + '\'
 $Jobdir.ToString()
 New-Item $Jobdir -ItemType 'Directory'
