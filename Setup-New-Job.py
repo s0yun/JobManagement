@@ -3,50 +3,52 @@ import json
 
 # Get user input for the root for the new files and folders to be created
 jobsearchroot = None
-jobsearchroot= str(jobsearchroot)
-while  os.path.exists(jobsearchroot) == False:
-    jobsearchroot = input("Please input the folder of your job search \nThis is where you wish to have the cover letters and any other supporting documents stored in a directory per job basis \nUNC Path format required.\n")
+jobsearchroot = str(jobsearchroot)
+while not os.path.exists(jobsearchroot):
+    jobsearchroot = input("Please input the folder of your job search.\nThis is where you wish to have the cover letters and any other supporting documents stored in a directory per job basis.\nUNC Path format required.\n")
 
 # Find the draft letter location
 draftcoverroot = None
-draftcoverroot= str(draftcoverroot)
-while  os.path.exists(draftcoverroot) == False:
-    draftcoverroot = input("Please input the directory that your draft cover letter is located \nUNC Path Required\n")
+draftcoverroot = str(draftcoverroot)
+while not os.path.exists(draftcoverroot):
+    draftcoverroot = input("Please input the directory where your draft cover letter is located.\nUNC Path Required.\n")
 
-# List contents of the directory 
+# List contents of the directory
 y = 0
-list = []
+file_list = []
 for x in os.listdir(draftcoverroot):
-    i = (f"{y} - {x}")
-    print (i)
+    i = f"{y} - {x}"
+    print(i)
     y += 1
-    list.append(i)
+    file_list.append(i)
 
 # Clean the list length for user selection because 0 matters
-max = len(list) - 1
+max_selection = len(file_list) - 1
 
 # Prompt for user confirmation of which file is to be selected
-draftletterselection = input(f"Select from the above using the number next to the file to select your Cover letter 0 - {max}: ")
+draftletterselection = input(f"Select from the above using the number next to the file to select your Cover letter 0 - {max_selection}: ")
 draftletterselection = int(draftletterselection)
-draftletter = list[draftletterselection]
+draftletter = file_list[draftletterselection]
 
-# Stanitse the variable
+# Sanitize the variable
 cleanfilename = draftletter[4:]
-# Create clean UNC
-draftletterunc = (f"{draftcoverroot}/{cleanfilename}")
 
-# To be used in future for confirmation before writing to the config file
-#print(f"Job Search Root: {jobsearchroot} \nDraft Letter location: {draftletterunc} \nLetter: {cleanfilename}")
+# Create clean UNC
+draftletterunc = f"{draftcoverroot}/{cleanfilename}"
+
+# To be used in the future for confirmation before writing to the config file
+# print(f"Job Search Root: {jobsearchroot}\nDraft Letter location: {draftletterunc}\nLetter: {cleanfilename}")
 
 # Define config file, this will be stored with the python file
 filename = "config.json"
 
-# declare the config data
+# Declare the config data
 configdata = {
-    "Job Search Root" : jobsearchroot,
-    "Draft Letter location" : draftletterunc, 
-    "Letter" : cleanfilename,
+    "Job Search Root": jobsearchroot,
+    "Draft Letter location": draftletterunc,
+    "Letter": cleanfilename,
 }
+
 # Write the file
 with open(filename, "w") as file:
     json.dump(configdata, file)
