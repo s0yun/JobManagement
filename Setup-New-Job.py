@@ -44,10 +44,11 @@ filename = "config.json"
 
 # Declare the config data
 configdata = {
-    "Job Search Root": jobsearchroot,
-    "Draft Letter location": draftletterunc,
-    "Letter": cleanfilename,
+    "jobsearchroot": jobsearchroot,
+    "draftletterlocation": draftletterunc,
+    "letter": cleanfilename,
 }
+
 
 # Write the file
 with open(filename, "w") as file:
