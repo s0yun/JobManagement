@@ -5,13 +5,17 @@ import json
 jobsearchroot = None
 jobsearchroot = str(jobsearchroot)
 while not os.path.exists(jobsearchroot):
-    jobsearchroot = input("Please input the folder of your job search.\nThis is where you wish to have the cover letters and any other supporting documents stored in a directory per job basis.\nUNC Path format required.\n")
+    jobsearchroot = input(
+        "Please input the folder of your job search.\nThis is where you wish to have the cover letters and any other supporting documents stored in a directory per job basis.\nUNC Path format required.\n"
+    )
 
 # Find the draft letter location
 draftcoverroot = None
 draftcoverroot = str(draftcoverroot)
 while not os.path.exists(draftcoverroot):
-    draftcoverroot = input("Please input the directory where your draft cover letter is located.\nUNC Path Required.\n")
+    draftcoverroot = input(
+        "Please input the directory where your draft cover letter is located.\nUNC Path Required.\n"
+    )
 
 # List contents of the directory
 y = 0
@@ -26,7 +30,9 @@ for x in os.listdir(draftcoverroot):
 max_selection = len(file_list) - 1
 
 # Prompt for user confirmation of which file is to be selected
-draftletterselection = input(f"Select from the above using the number next to the file to select your Cover letter 0 - {max_selection}: ")
+draftletterselection = input(
+    f"Select from the above using the number next to the file to select your Cover letter 0 - {max_selection}: "
+)
 draftletterselection = int(draftletterselection)
 draftletter = file_list[draftletterselection]
 
@@ -47,6 +53,7 @@ configdata = {
     "jobsearchroot": jobsearchroot,
     "draftletterlocation": draftletterunc,
     "letter": cleanfilename,
+    "status": "valid",
 }
 
 
