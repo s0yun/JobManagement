@@ -1,4 +1,5 @@
 import os
+import json
 
 # Get user input for the root for the new files and folders to be created
 jobsearchroot = None
@@ -34,4 +35,18 @@ cleanfilename = draftletter[4:]
 # Create clean UNC
 draftletterunc = (f"{draftcoverroot}/{cleanfilename}")
 
-print(f"Job Search Root: {jobsearchroot} \nDraft Letter location: {draftletterunc} \nLetter: {cleanfilename}")
+# To be used in future for confirmation before writing to the config file
+#print(f"Job Search Root: {jobsearchroot} \nDraft Letter location: {draftletterunc} \nLetter: {cleanfilename}")
+
+# Define config file, this will be stored with the python file
+filename = "config.json"
+
+# declare the config data
+configdata = {
+    "Job Search Root" : jobsearchroot,
+    "Draft Letter location" : draftletterunc, 
+    "Letter" : cleanfilename,
+}
+# Write the file
+with open(filename, "w") as file:
+    json.dump(configdata, file)
