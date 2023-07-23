@@ -51,26 +51,37 @@ def configcreation():
     # Create clean UNC
     draftletterunc = f"{draftcoverroot}/{cleanfilename}"
 
+
+def saveconfig():
+    # Define config file, this will be stored with the python file
+    filename = "config.json"
+
+    # Declare the config data
+    configdata = {
+        "jobsearchroot": jobsearchroot,
+        "draftletterlocation": draftletterunc,
+        "letter": cleanfilename,
+        "status": "valid",
+    }
+
+
+    # Write the file
+    with open(filename, "w") as file:
+        json.dump(configdata, file)
+
 configcreation()
 
 # To be used in the future for confirmation before writing to the config file
 print ("Confirmation Required")
 print(f"Job Search Root: {jobsearchroot}\nDraft Letter location: {draftletterunc}\nLetter: {cleanfilename}")
 
-print("Are you happy with this configuration?")
+confirm = None
 
-# # Define config file, this will be stored with the python file
-# filename = "config.json"
-
-# # Declare the config data
-# configdata = {
-#     "jobsearchroot": jobsearchroot,
-#     "draftletterlocation": draftletterunc,
-#     "letter": cleanfilename,
-#     "status": "valid",
-# }
-
-
-# # Write the file
-# with open(filename, "w") as file:
-#     json.dump(configdata, file)
+while confirm != 'y' or confirm != 'n':
+    confirm = input("Are you happy with this configuration? ")
+    if confirm.lower == 'y':
+        saveconfig()
+    elif confirm.lower == 'n':
+        configcreation()
+    else:
+       confirm = input("Confirm choice with either y or n.") 
