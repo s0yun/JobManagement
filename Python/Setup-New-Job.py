@@ -75,13 +75,15 @@ configcreation()
 print ("Confirmation Required")
 print(f"Job Search Root: {jobsearchroot}\nDraft Letter location: {draftletterunc}\nLetter: {cleanfilename}")
 
-confirm = None
+# Confirmation dialog
+confirm = input("Are you happy with this configuration? ")
 
 while confirm != 'y' or confirm != 'n':
-    confirm = input("Are you happy with this configuration? ")
     if confirm.lower == 'y':
         saveconfig()
+        break
     elif confirm.lower == 'n':
         configcreation()
+        break
     else:
-       confirm = input("Confirm choice with either y or n.") 
+       confirm = input("Confirm choice with either y or n:") 
