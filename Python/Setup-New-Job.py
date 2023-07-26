@@ -7,11 +7,25 @@ draftletterunc = None
 cleanfilename = None
 
 
+def clear_variables():
+    global jobsearchroot
+    global draftcoverroot
+    global draftletterunc
+    global cleanfilename
+    jobsearchroot = None
+    draftcoverroot = None
+    draftletterunc = None
+    cleanfilename = None
+
+
+
 def configcreation():
     global jobsearchroot
     global draftcoverroot
     global draftletterunc
     global cleanfilename
+    # Clear variables
+    clear_variables()
     # Get user input for the root for the new files and folders to be created
     jobsearchroot = str(jobsearchroot)
     while not os.path.exists(jobsearchroot):
@@ -86,14 +100,7 @@ def run_configuration():
     if confirm.lower() == 'y':
         saveconfig()
     else:
-        global jobsearchroot
-        global draftcoverroot
-        global draftletterunc
-        global cleanfilename
-        jobsearchroot = None
-        draftcoverroot = None
-        draftletterunc = None
-        cleanfilename = None
+
         run_configuration()
 
 
