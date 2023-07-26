@@ -69,21 +69,32 @@ def saveconfig():
     with open(filename, "w") as file:
         json.dump(configdata, file)
 
-configcreation()
 
-# To be used in the future for confirmation before writing to the config file
-print ("Confirmation Required")
-print(f"Job Search Root: {jobsearchroot}\nDraft Letter location: {draftletterunc}\nLetter: {cleanfilename}")
+def run_configuration():
+    configcreation()
 
-# Confirmation dialog
-confirm = input("Are you happy with this configuration? ")
+    # To be used in the future for confirmation before writing to the config file
+    print("Confirmation Required")
+    print(f"Job Search Root: {jobsearchroot}\nDraft Letter location: {draftletterunc}\nLetter: {cleanfilename}")
 
-while confirm != 'y' or confirm != 'n':
-    if confirm.lower == 'y':
+    # Confirmation dialog
+    confirm = input("Are you happy with this configuration? (y/n) ")
+
+    while confirm.lower() not in ('y', 'n'):
+        confirm = input("Confirm choice with either y or n: ")
+
+    if confirm.lower() == 'y':
         saveconfig()
-        break
-    elif confirm.lower == 'n':
-        configcreation()
-        break
     else:
-       confirm = input("Confirm choice with either y or n:") 
+        global jobsearchroot
+        global draftcoverroot
+        global draftletterunc
+        global cleanfilename
+        jobsearchroot = None
+        draftcoverroot = None
+        draftletterunc = None
+        cleanfilename = None
+        run_configuration()
+
+
+run_configuration()
