@@ -40,10 +40,12 @@ During the first run you'll be asked for your directory structure and where you 
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
 #### First use
-In order to generate the configuration you'll need to run `Setup-New-Job.py` This will generate the required configuration file that the python script requires. 
+In order to generate the configuration you'll need to run `setup_new_job.py` This will generate the required configuration file that the python script requires. 
 
 #### General use
-To use this just run the `New-Job.py` and follow the prompts. 
+To use this just run the `new_job` and follow the prompts. 
+
+
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
